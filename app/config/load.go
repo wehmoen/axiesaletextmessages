@@ -3,9 +3,18 @@ package config
 import "flag"
 
 func New() map[string]string {
-	rpc := flag.String("rpc", "wss://rpc2.ronin.rest/ronin-testnet/ws", "Ronin Websocket RPC")
-	axie_contract := flag.String("axie_contract", "0xcaca1c072d26e46686d932686015207fbe08fdb8", "Axie Contract")
-	marketplace := flag.String("marketplace", "0xa7be1f3c47f191217a6e0bf3f7d05ca39427e0af", "Marketplace Contract")
+const (
+	defaultRPC = "wss://rpc2.ronin.rest/ronin-testnet/ws"
+	defaultAxieContract = "0xcaca1c072d26e46686d932686015207fbe08fdb8"
+	defaultMarketplace = "0xa7be1f3c47f191217a6e0bf3f7d05ca39427e0af"
+)
+
+func New() map[string]string {
+	rpc := flag.String("rpc", defaultRPC, "Ronin Websocket RPC")
+	axie_contract := flag.String("axie_contract", defaultAxieContract, "Axie Contract")
+	marketplace := flag.String("marketplace", defaultMarketplace, "Marketplace Contract")
+	...
+}
 
 	seller := flag.String("seller", "", "Seller Address to monitor")
 
