@@ -3,6 +3,7 @@ package marketplacegatewayv2
 import (
 	"context"
 	"errors"
+	"fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"math/big"
@@ -10,6 +11,7 @@ import (
 
 const (
 	TRANSFER_TOPIC = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+	DECIMAL_PLACES = 18
 )
 
 type AxieTransfer struct {
@@ -19,16 +21,9 @@ type AxieTransfer struct {
 }
 
 func (m *Marketplacegatewayv2OrderMatched) formatPrice() string {
-	// Create a big.Int with the value 10^18
 	divisor := new(big.Int).Exp(big.NewInt(10), big.NewInt(18), nil)
-
-	// Divide num by divisor
-	result := new(big.Float).SetInt(m.SellerReceived)
-	result.Quo(result, new(big.Float).SetInt(divisor))
-
-	// Convert the result to a string with 6 decimal places
-	return result.Text('f', 6)
-
+	result := new(big.Int).Div(m.SellerReceived, divisor)
+	return fmt.Sprintf("%d.%0*d", result, DECIMAL_PLACES, 0)
 }
 
 func (m *Marketplacegatewayv2OrderMatched) getAxieTransfer(chain *ethclient.Client, axieContract common.Address) (*AxieTransfer, error) {
