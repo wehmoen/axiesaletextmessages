@@ -15,6 +15,15 @@ func New() map[string]string {
 	marketplace := flag.String("marketplace", defaultMarketplace, "Marketplace Contract")
 	...
 }
+	defaultMarketplace = "0xa7be1f3c47f191217a6e0bf3f7d05ca39427e0af"
+)
+
+func New() map[string]string {
+	rpc := flag.String("rpc", defaultRPC, "Ronin Websocket RPC")
+	axie_contract := flag.String("axie_contract", defaultAxieContract, "Axie Contract")
+	marketplace := flag.String("marketplace", defaultMarketplace, "Marketplace Contract")
+	...
+}
 
 	seller := flag.String("seller", "", "Seller Address to monitor")
 
