@@ -7,9 +7,7 @@ This tool sends you a text message every time one of your Axies is sold on the m
 - [GoLang](https://golang.org/dl/) (1.20+)
 - [Twilio](https://www.twilio.com/) account
 - [Axie Infinity](https://axieinfinity.com/) account
-- [Axie Infinity API](https://axieinfinity.com/) key
-- [Axie Infinity API](https://axieinfinity.com/) secret
-- [Axie Infinity API](https://axieinfinity.com/) address
+- [Ronin Address](https://roninchain.com/)
 
 ## Installation
 
